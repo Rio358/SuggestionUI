@@ -36,14 +36,14 @@ if Config.displayidentifiers then
         {
           title = "New Report",
           color = 16754176,
-          description = "**User:** ".. GetPlayerName(source) .. " **[ID:** ".. source .."**]**\n**Suggestion:** ".. description .."\n**Steam:** ".. steam:gsub('steam:', '') .."\n**GameLicense:** ".. license:gsub('license:', '') .."\n**Discord UID:** ".. discord2:gsub('discord:', '') .."\n**Discord Tag:** <@!"..  discord2:gsub('discord:', '') .. ">",
+          description = "**User:** ".. GetPlayerName(source) .. " **[ID:** ".. source .."**]**\n**Report:** ".. description .."\n**Steam:** ".. steam:gsub('steam:', '') .."\n**GameLicense:** ".. license:gsub('license:', '') .."\n**Discord UID:** ".. discord2:gsub('discord:', '') .."\n**Discord Tag:** <@!"..  discord2:gsub('discord:', '') .. ">",
         }
       },
     }), { ['Content-Type'] = 'application/json' })
 
 
   TriggerClientEvent("SuggestionUI:suggestionSent", source)
-  TriggerClientEvent("mythic_notify:client:SendNotification", source, {type = "inform", text = "Your Report was successfully sent to our Administrators", length = 7000})
+  TriggerClientEvent("mythic_notify:client:SendAlert", source, { type = "inform", text = "Your Report was successfully sent to our Administrators", length = 7000})
 else
   PerformHttpRequest(Config.discordwebhooklink, function(err, text, headers) end, 'POST', json.encode(
     {
@@ -60,13 +60,13 @@ else
 
 
   TriggerClientEvent("SuggestionUI:suggestionSent", source)
-  TriggerClientEvent("mythic_notify:client:SendNotification", source, {type = "inform", text = "Your Report was successfully sent to our Administrators", length = 7000})
+  TriggerClientEvent("mythic_notify:client:SendAlert", source, { type = "inform", text = "Your Report was successfully sent to our Administrators", length = 7000})
   end
 end)
 
 RegisterNetEvent("SuggestionUI:emptyFields")
 AddEventHandler("SuggestionUI:emptyFields", function(data)
-	TriggerClientEvent("mythic_notify:client:SendNotification", source, {type = "inform", text = "Please fill out the required fields.", length = 7000})
+	TriggerClientEvent("mythic_notify:client:SendAlert", source, { type = "inform", text = "Please fill out the required fields.", length = 7000})
 end)
 
 Citizen.CreateThread(function()
