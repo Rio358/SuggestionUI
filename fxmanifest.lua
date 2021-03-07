@@ -2,6 +2,7 @@ fx_version 'adamant'
 game 'gta5'
 description 'Suggestion UI with discord webhook'
 version '1.0.0'
+author 'Swqppingg'
 
 ui_page "ui/index.html"
 
