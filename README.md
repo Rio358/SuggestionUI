@@ -3,8 +3,8 @@ Script for sending reports in-game with discord webhook
 
 
 # :hammer_and_wrench: Requirements
-[pNotify](https://forum.cfx.re/t/release-pnotify-in-game-js-notifications-using-noty/20659)
-^ use if you want, otherwise triggering a notification system of your choice is easy enough to implement.
+[mythic_notify](https://github.com/FlawwsX/mythic_notify)
+ use if you want, otherwise triggering a notification system of your choice is easy enough to implement.
 
 # :computer: **Commands:**
 **/report** - Opens the report UI
