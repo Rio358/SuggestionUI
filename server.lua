@@ -30,11 +30,11 @@ AddEventHandler("SuggestionUI:sendSuggestion", function(data)
 if Config.displayidentifiers then
   PerformHttpRequest(Config.discordwebhooklink, function(err, text, headers) end, 'POST', json.encode(
     {
-      username = "Suggestions",
+      username = "Reports",
       --avatar_url = Image,
       embeds = {
         {
-          title = "New Suggestion",
+          title = "New Report",
           color = 16754176,
           description = "**User:** ".. GetPlayerName(source) .. " **[ID:** ".. source .."**]**\n**Suggestion:** ".. description .."\n**Steam:** ".. steam:gsub('steam:', '') .."\n**GameLicense:** ".. license:gsub('license:', '') .."\n**Discord UID:** ".. discord2:gsub('discord:', '') .."\n**Discord Tag:** <@!"..  discord2:gsub('discord:', '') .. ">",
         }
@@ -43,7 +43,7 @@ if Config.displayidentifiers then
 
 
   TriggerClientEvent("SuggestionUI:suggestionSent", source)
-  TriggerClientEvent("pNotify:SendNotification", source,{text = "Your suggestion was successfully sent to our developers", type = "success", queue = "global", timeout = 4000, layout = "bottomCenter",animation = {open = "gta_effects_open", close = "gta_effects_fade_out"},killer = true})
+  TriggerClientEvent("mythic_notify:client:SendNotification", source, {type = "inform", text = "Your Report was successfully sent to our Administrators", length = 7000})
 else
   PerformHttpRequest(Config.discordwebhooklink, function(err, text, headers) end, 'POST', json.encode(
     {
@@ -60,21 +60,21 @@ else
 
 
   TriggerClientEvent("SuggestionUI:suggestionSent", source)
-  TriggerClientEvent("pNotify:SendNotification", source,{text = "Your Suggestion was successfully sent to our developers", type = "success", queue = "global", timeout = 4000, layout = "bottomCenter",animation = {open = "gta_effects_open", close = "gta_effects_fade_out"},killer = true})
+  TriggerClientEvent("mythic_notify:client:SendNotification", source, {type = "inform", text = "Your Report was successfully sent to our Administrators", length = 7000})
   end
 end)
 
 RegisterNetEvent("SuggestionUI:emptyFields")
 AddEventHandler("SuggestionUI:emptyFields", function(data)
-	TriggerClientEvent("pNotify:SendNotification", source,{text = "Please fill in all the required fields", type = "error", queue = "global", timeout = 4000, layout = "bottomCenter",animation = {open = "gta_effects_open", close = "gta_effects_fade_out"},killer = true})
+	TriggerClientEvent("mythic_notify:client:SendNotification", source, {type = "inform", text = "Please fill out the required fields.", length = 7000})
 end)
 
 Citizen.CreateThread(function()
-	if (GetCurrentResourceName() ~= "SuggestionUI") then 
-		print("[" .. GetCurrentResourceName() .. "] " .. "IMPORTANT: This resource must be named SuggestionUI for it to work properly!");
-		print("[" .. GetCurrentResourceName() .. "] " .. "IMPORTANT: This resource must be named SuggestionUI for it to work properly!");
-		print("[" .. GetCurrentResourceName() .. "] " .. "IMPORTANT: This resource must be named SuggestionUI for it to work properly!");
-		print("[" .. GetCurrentResourceName() .. "] " .. "IMPORTANT: This resource must be named SuggestionUI for it to work properly!");
+	if (GetCurrentResourceName() ~= "reports") then 
+		print("[" .. GetCurrentResourceName() .. "] " .. "IMPORTANT: This resource must be named reports for it to work properly!");
+		print("[" .. GetCurrentResourceName() .. "] " .. "IMPORTANT: This resource must be named reports for it to work properly!");
+		print("[" .. GetCurrentResourceName() .. "] " .. "IMPORTANT: This resource must be named reports for it to work properly!");
+		print("[" .. GetCurrentResourceName() .. "] " .. "IMPORTANT: This resource must be named reports for it to work properly!");
 	end
 end)
 
@@ -85,41 +85,4 @@ Citizen.CreateThread(function()
         print("[" .. GetCurrentResourceName() .. "] " .. "IMPORTANT: You need to change the webhook link in server.lua for it to work properly");
         print("[" .. GetCurrentResourceName() .. "] " .. "IMPORTANT: You need to change the webhook link in server.lua for it to work properly");
     end
-end)
-
--- Version Check
-Citizen.CreateThread(
-	function()
-		if Config.versionchecker then
-		local vRaw = LoadResourceFile(GetCurrentResourceName(), 'version.json')
-		if vRaw and Config.versionCheck then
-			local v = json.decode(vRaw)
-			PerformHttpRequest(
-				'https://raw.githubusercontent.com/Swqppingg/SuggestionUI/main/version.json',
-				function(code, res, headers)
-					if code == 200 then
-						local rv = json.decode(res)
-						if rv.version ~= v.version then
-							print(
-								([[^1
--------------------------------------------------------
-SuggestionUI
-UPDATE: %s AVAILABLE
-CHANGELOG: %s
-DOWNLOAD: https://github.com/Swqppingg/SuggestionUI
--------------------------------------------------------
-^0]]):format(
-									rv.version,
-									rv.changelog
-								)
-							)
-						end
-					else
-						print('^SuggestionUI was unable to check version^0')
-					end
-				end,
-				'GET'
-			)
-		end
-	end
 end)
