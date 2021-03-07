@@ -10,7 +10,7 @@ Script for sending reports in-game with discord webhook
 **/report** - Opens the report UI
 
 # :camera: **Pictures:**
-![In-game UI](https://i.imgur.com/FoUx5JI.png)
+![In-game UI](https://i.imgur.com/twMcS0F.png)
 
 ![Discord Webhook](https://i.imgur.com/mo25brm.png)
 
