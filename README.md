@@ -15,7 +15,7 @@ Script for sending reports in-game with discord webhook
 ![Discord Webhook](https://i.imgur.com/mo25brm.png)
 
 # :inbox_tray: Download
-[Download via Github] (https://github.com/Rio358/SuggestionUI)
+[Download via Github] (https://github.com/Rio358/reportUI)
 
 # :gear: How to install
 1. Add the **reports** folder to your FiveM resources directory.
