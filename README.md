@@ -1,5 +1,5 @@
 # :warning: Information
-Script for sending suggestions in-game
+Script for sending reports in-game with discord webhook
 
 
 # :hammer_and_wrench: Requirements
@@ -18,7 +18,8 @@ Script for sending suggestions in-game
 [Download via Github](https://github.com/Swqppingg/SuggestionUI)
 
 # :gear: How to install
-1. Add the **SuggestionUI** folder to your FiveM resources directory.
-2. Edit your server.cfg and add “ensure **SuggestionUI**”
+1. Add the **reports** folder to your FiveM resources directory.
+2. Edit your server.cfg and add “ensure **reports**”
 3. Edit config.lua and add your discord webhook link
 
+All rights Reserved to the Original Author of SuggestionUI @https://github.com/Swqppingg/SuggestionUI
