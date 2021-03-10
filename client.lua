@@ -18,12 +18,12 @@ function closeGui()
   SendNUIMessage({show = false})
 end
 
-RegisterCommand('suggestion', function(source)
+RegisterCommand('report', function(source)
 	openGui()
 end)
 
-RegisterNetEvent("SuggestionUI:openGui")
-AddEventHandler("SuggestionUI:openGui", function(user_id)
+RegisterNetEvent("reportUI:openGui")
+AddEventHandler("reportUI:openGui", function(user_id)
 	user_id = user_id
     openGui()
 end)
@@ -34,21 +34,21 @@ RegisterNUICallback("sendSuggestion", function(data)
   if (discord == "" or description == "") then
 
   else
-    TriggerServerEvent("SuggestionUI:sendSuggestion", data)
+    TriggerServerEvent("reportUI:sendSuggestion", data)
   end
 
 end)
 
 
-RegisterNetEvent("SuggestionUI:suggestionSent")
-AddEventHandler("SuggestionUI:suggestionSent", function(user_id)
+RegisterNetEvent("reportUI:suggestionSent")
+AddEventHandler("reportUI:suggestionSent", function(user_id)
 	user_id = user_id
     closeGui()
 end)
 
 
 RegisterNUICallback("emptyFields", function()
-  TriggerServerEvent("SuggestionUI:emptyFields")
+  TriggerServerEvent("reportUI:emptyFields")
 end)
 
 RegisterNUICallback("close", function()

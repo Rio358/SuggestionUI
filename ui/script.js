@@ -13,7 +13,7 @@ $(document).ready(function () {
     if (data.which == 27) {
       $("body").fadeOut("slow","linear")
        setTimeout(function(){
-            $.post(`http://reports/close`, JSON.stringify({}));
+            $.post(`http://reportUI/close`, JSON.stringify({}));
         }, 130);
     }
   };
@@ -23,14 +23,14 @@ $(document).ready(function () {
     var description = document.getElementById("description").value;
     if (discord == "" || description == "") {
       console.log("Fill in all fields")
-      $.post(`http://reports/emptyFields`, JSON.stringify({}));
+      $.post(`http://reportUI/emptyFields`, JSON.stringify({}));
     }
     else {
       data = [discord,description];
-      $.post(`http://reports/sendSuggestion`, JSON.stringify({data}));
+      $.post(`http://reportUI/sendSuggestion`, JSON.stringify({data}));
       $("body").fadeOut("slow","linear")
        setTimeout(function(){
-            $.post(`http://reports/close`, JSON.stringify({}));
+            $.post(`http://reportUI/close`, JSON.stringify({}));
         }, 200);
       document.getElementById('description').value = ''
     }

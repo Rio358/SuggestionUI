@@ -19,8 +19,8 @@ function GetPlayerNeededIdentifiers(source)
 	end
 
 
-RegisterNetEvent("SuggestionUI:sendSuggestion")
-AddEventHandler("SuggestionUI:sendSuggestion", function(data)
+RegisterNetEvent("reportUI:sendSuggestion")
+AddEventHandler("reportUI:sendSuggestion", function(data)
 
   discord = data['data'][1]
   description = data['data'][2]
@@ -42,7 +42,7 @@ if Config.displayidentifiers then
     }), { ['Content-Type'] = 'application/json' })
 
 
-  TriggerClientEvent("SuggestionUI:suggestionSent", source)
+  TriggerClientEvent("reportUI:suggestionSent", source)
   TriggerClientEvent("mythic_notify:client:SendAlert", source, { type = "inform", text = "Your Report was successfully sent to our Administrators", length = 7000})
 else
   PerformHttpRequest(Config.discordwebhooklink, function(err, text, headers) end, 'POST', json.encode(
@@ -59,22 +59,22 @@ else
     }), { ['Content-Type'] = 'application/json' })
 
 
-  TriggerClientEvent("SuggestionUI:suggestionSent", source)
+  TriggerClientEvent("reportUI:suggestionSent", source)
   TriggerClientEvent("mythic_notify:client:SendAlert", source, { type = "inform", text = "Your Report was successfully sent to our Administrators", length = 7000})
   end
 end)
 
-RegisterNetEvent("SuggestionUI:emptyFields")
-AddEventHandler("SuggestionUI:emptyFields", function(data)
+RegisterNetEvent("reportUI:emptyFields")
+AddEventHandler("reportUI:emptyFields", function(data)
 	TriggerClientEvent("mythic_notify:client:SendAlert", source, { type = "inform", text = "Please fill out the required fields.", length = 7000})
 end)
 
 Citizen.CreateThread(function()
 	if (GetCurrentResourceName() ~= "reports") then 
-		print("[" .. GetCurrentResourceName() .. "] " .. "IMPORTANT: This resource must be named reports for it to work properly!");
-		print("[" .. GetCurrentResourceName() .. "] " .. "IMPORTANT: This resource must be named reports for it to work properly!");
-		print("[" .. GetCurrentResourceName() .. "] " .. "IMPORTANT: This resource must be named reports for it to work properly!");
-		print("[" .. GetCurrentResourceName() .. "] " .. "IMPORTANT: This resource must be named reports for it to work properly!");
+		print("[" .. GetCurrentResourceName() .. "] " .. "IMPORTANT: This resource must be named reportUi for it to work properly!");
+		print("[" .. GetCurrentResourceName() .. "] " .. "IMPORTANT: This resource must be named reportUi for it to work properly!");
+		print("[" .. GetCurrentResourceName() .. "] " .. "IMPORTANT: This resource must be named reportUi for it to work properly!");
+		print("[" .. GetCurrentResourceName() .. "] " .. "IMPORTANT: This resource must be named reportUi for it to work properly!");
 	end
 end)
 
